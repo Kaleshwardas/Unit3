@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Anthony</h1>
+</body>
+</html>
+<script>
+    let amar={
+       name:"Amar",
+       skill:"Singer",
+       city:"Goa",
+
+   }
+   let anthony={
+       name:"Akbar",
+       skill:"Chef",
+       city:"Mumbai",
+       
+   }
+   let akbar={
+       name:"Anthony",
+       skill:"Magician",
+       city:"Kashmir",
+    }
+function skill(a,b,c){
+    console.log(`${this.name} lives in ${this.city} and is a ${a} and ${b} and ${c} `)
+}
+
+skill.call(amar,amar.skill,anthony.skill,akbar.skill)
+skill.call(anthony,anthony.skill,amar.skill,akbar.skill)
+skill.call(akbar,akbar.skill,amar.skill,anthony.skill)
+
+
+    
+</script>

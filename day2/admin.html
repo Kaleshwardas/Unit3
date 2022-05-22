@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce_1</title>
+    <link rel="stylesheet" href="admin.css">
+    
+</head>
+<body>
+    <form  id="form">
+        <input id="name" type="text" placeholder="Product Name">
+        <select id="category" placeholder="Select Category">
+            <option value="">Select Category</option>
+            
+            <option value="Shoes">Shoes</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Toys">Toys</option>
+        </select>
+        <input id="image" type="text" placeholder="ImageUrl">
+        <input id="price" type="number" placeholder="Product Price">
+        <select  id="gender" placeholder="Select Gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <select  id="sold">
+            <option value="False">False</option>
+            <option value="True">True</option>
+        </select>
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+     var form=document.querySelector("#form")
+     var products=JSON.parse(localStorage.getItem("products")) || []
+
+    
+     form.addEventListener("submit", function(event){
+        event.preventDefault();
+        var data={
+            Imageurl:form.image.value,
+            ProductName:form.name.value,
+            Category:form.category.value,
+            Price:form.price.value,
+            Gender:form.gender.value,
+            Sold:form.sold.value,
+
+        }
+        products.push(data)
+        console.log(Arr)
+        localStorage.setItem("products",JSON.stringify(products))
+        window.location.href="products.html"
+     })
+    
+
+
+</script>
+
