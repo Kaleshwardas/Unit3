@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #head{
+            width:100%;
+            height:50px;
+            border:1px solid red;
+        }
+        #movies{
+            display:grid;
+            grid-template-columns: repeat(3,400px);
+            grid-template-rows: 500px 500px;
+            justify-content: center;
+            justify-items: center;
+          
+            gap:30px;
+        }
+        #movies>div{
+            border:1px solid red;
+            margin:auto;
+            margin-bottom: 40px;
+        }
+        div>img{
+           height:70%;
+           width:100%;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <select id="sortRating" onChange="handleSalarySort()">
+            <option >Short by Rating</option>
+            <option value="HTL"> High to Low</option>
+            <option value="LTH">Low to High</option>
+        </select>
+    </div>
+    <div id="movies"></div>
+</body>
+</html>
+<script>
+var movieData=JSON.parse(localStorage.getItem("movieData"))||[]
+  
+
+var movies=document.querySelector("#movies");
+
+
+
+function handleSalarySort() {
+    
+      var selected = document.querySelector("#sortRating").value;
+    //   console.log(selected);
+     
+      if (selected == "HTL") {
+      movieData.sort(function (a, b) {
+          return b.rating - a.rating;
+        });
+        console.log(movieData);
+        display(movieData);
+      }
+      if (selected == "LTH") {
+        movieData.sort(function (a, b) {
+          return a.rating - b.rating;
+        });
+        console.log(movieData);
+        display(movieData);
+      }
+    }
+
+
+
+function display(data){
+    movieData.innerHTML=null;
+    data.forEach(function(element){
+     var card=document.createElement("div");
+     var img=document.createElement("img")
+     img.src=element.image
+
+     var name=document.createElement("h2")
+     name.textContent=element. movieName;
+
+    
+     var date=document.createElement("h3")
+     date.textContent=element.date;
+
+     var rating=document.createElement("h2")
+    rating.textContent=element.rating;
+     
+     card.append(img,name,date,rating)
+    movies.append(card);
+    });
+}
+display(movieData)
+
+</script>
